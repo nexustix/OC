@@ -1,3 +1,5 @@
+local slz = require("serialization")
+
 local fileutil = {}
 
 function fileutil.writeln(src, dest)

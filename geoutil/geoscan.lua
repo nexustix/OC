@@ -4,16 +4,6 @@ local fs = require("filesystem")
 
 local geo = component.geolyzer
 
-function writeln(src, dest)
-    dest:write(src)
-    dest:write("\n")
-end
-
-function addValue(val, dest)
-    local slzVar = slz.serialize(val)
-    writeln(slzVar, dest)
-end
-
 function move(direction, curX, curY)
     local tmpX = curX
     local tmpY = curY
@@ -28,35 +18,6 @@ function move(direction, curX, curY)
         tmpX = tmpX + 1
     end
     return tmpX, tmpY
-end
-
-function scan(intensity, x, y)
-    local result = geo.scan(x, y)
-
-    for i = 1, intensity do
-        local addResult = geo.scan(x, y)
-        for k,v in pairs(result) do
-            --print(k ..": "..v)
-            result[k] = result[k] + addResult[k]
-        end
-    end
-
-    for k,v in pairs(result) do
-        --print(k ..": "..v)
-        result[k] = result[k] / (intensity + 1)
-    end
-
-    return result
-end
-
-function scanChunk(intensity, ChunkX, ChunkY)
-    for y = 0, 15 do
-        for x = 0, 15 do
-            print(x.." : "..y)
-            scan(intensity, x, y)
-            --os.sleep(0.1)
-        end
-    end
 end
 
 local configpath = "geo.cfg"

@@ -16,9 +16,9 @@ local stdConfig = {}
 
 stdConfig["cake"] = "lie"
 
-if false then
+if true then
     file = io.open(configpath,"w")
-    addValue(stdConfig)
+    addValue(stdConfig, file)
     file:close()
 end
 

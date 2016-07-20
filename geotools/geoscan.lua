@@ -2,6 +2,8 @@ local component = require("component")
 local slz = require("serialization")
 local fs = require("filesystem")
 
+local geo = component.geolyzer
+
 function writeln(src, dest)
     dest:write(src)
     dest:write("\n")

@@ -1,4 +1,40 @@
 local component = require("component")
+local geo = component.geolyzer
+
+function scanPillar(intensity, x, y)
+    local result = geo.scan(x, y)
+
+    for i = 1, intensity do
+        local addResult = geo.scan(x, y)
+        for k,v in pairs(result) do
+            --print(k ..": "..v)
+            result[k] = result[k] + addResult[k]
+        end
+    end
+
+    for k,v in pairs(result) do
+        --print(k ..": "..v)
+        result[k] = result[k] / (intensity + 1)
+    end
+
+    return result
+end
+
+function scanChunk(intensity, ChunkX, ChunkY)
+    for y = 0, 15 do
+        for x = 0, 15 do
+            print(x.." : "..y)
+            scanPillar(intensity, x+(16*ChunkX), y+(16*ChunkY))
+            --os.sleep(0.1)
+        end
+    end
+end
+
+scanchunk(1, 0, 0)
+
+
+--[[
+local component = require("component")
 local slz = require("serialization")
 local fs = require("filesystem")
 
@@ -12,7 +48,7 @@ function writeln(src, dest)
     dest:write("\n")
 end
 
-function addValue(val, dest)
+function add_value(val, dest)
     local slzVar = slz.serialize(val)
     writeln(slzVar, dest)
 end
@@ -81,5 +117,5 @@ while true do
 end
 ]]--
 
-print(config)
-print(rawConfig)
+--print(config)
+--print(rawConfig)

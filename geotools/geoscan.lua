@@ -28,8 +28,8 @@ end
 local configpath = "geo.cfg"
 local config = {}
 
-stdConfig["curX"] = 0
-stdConfig["curY"] = 0
+config["curX"] = 0
+config["curY"] = 0
 
 if not fs.exists("configpath") then
     file = io.open(configpath,"w")

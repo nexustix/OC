@@ -7,7 +7,7 @@ end
 
 function fileutil.addValue(val, dest)
     local slzVar = slz.serialize(val)
-    writeln(slzVar, dest)
+    self.writeln(slzVar, dest)
 end
 
 return fileutil

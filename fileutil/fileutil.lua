@@ -1,4 +1,4 @@
-local slz = require("serialization")
+local slz = require 'serialization'
 
 local fileutil = {}
 

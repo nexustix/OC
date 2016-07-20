@@ -48,10 +48,11 @@ function scan(intensity, x, y)
 end
 
 function scanChunk(intensity, ChunkX, ChunkY)
-    for y = 0, 16 do
-        for x = 0, 16 do
+    for y = 0, 15 do
+        for x = 0, 15 do
             print(x.." : "..y)
-            os.sleep(0.1)
+            scan(intensity, x, y)
+            --os.sleep(0.1)
         end
     end
 end

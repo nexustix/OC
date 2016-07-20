@@ -12,17 +12,39 @@ function addValue(val, dest)
     writeln(slzVar, dest)
 end
 
-function move(direction, curState)
+function move(direction, curX, curY)
+    local tmpX = curX
+    local tmpY = curY
     if direction == "" then
     elseif direction == "up" then
-        curState["curY"] = curState["curY"] + 1
+        tmpY = tmpY + 1
     elseif direction == "down" then
-        curState["curY"] = curState["curY"] - 1
+        tmpY = tmpY - 1
     elseif direction == "left" then
-        curState["curX"] = curState["curX"] - 1
+        tmpX = tmpX - 1
     elseif direction == "right" then
-        curState["curX"] = curState["curX"] + 1
+        tmpX = tmpX + 1
     end
+    return tmpX, tmpY
+end
+
+function scan(intensity, x, y)
+    local result = geo.scan(x, y)
+
+    for i in range(intensity) do
+        local addResult = geo.scan(x, y)
+        for k,v in pairs(result) do
+            --print(k ..": "..v)
+            result[k] = result[k] + addResult[k]
+        end
+    end
+
+    for k,v in pairs(result) do
+        --print(k ..": "..v)
+        result[k] = result[k] / (intensity + 1)
+    end
+
+    return result
 end
 
 local configpath = "geo.cfg"
@@ -40,23 +62,16 @@ end
 file = io.open(configpath, "r")
 config = slz.unserialize(file:read("*l"))
 
-print(config)
 
-local geo = component.geolyzer
+--local geo = component.geolyzer
 
-function getLast()
+--local curX = 0
+--local curY = 0
 
-end
-
-local filename = "test"
-
-local curX = 0
-local curY = 0
-
-local result = {}
+--local result = {}
 
 
-
+--[[
 --HACK for testing
 while true do
     result = geo.scan(curX, curY)
@@ -67,3 +82,6 @@ while true do
 
     break
 end
+]]--
+
+print(config)

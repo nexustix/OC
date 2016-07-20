@@ -1,5 +1,6 @@
 local component = require("component")
 local slz = require("serialization")
+local fs = require("filesystem")
 
 function writeln(src, dest)
     dest:write(src)
@@ -11,18 +12,35 @@ function addValue(val, dest)
     writeln(slzVar, dest)
 end
 
+function move(direction, curState)
+    if direction == "" then
+    elseif direction == "up" then
+        curState["curY"] = curState["curY"] + 1
+    elseif direction == "down" then
+        curState["curY"] = curState["curY"] - 1
+    elseif direction == "left" then
+        curState["curX"] = curState["curX"] - 1
+    elseif direction == "right" then
+        curState["curX"] = curState["curX"] + 1
+    end
+end
+
 local configpath = "geo.cfg"
-local stdConfig = {}
+local config = {}
 
-stdConfig["cake"] = "lie"
+stdConfig["curX"] = 0
+stdConfig["curY"] = 0
 
-if true then
+if not fs.exists("configpath") then
     file = io.open(configpath,"w")
-    addValue(stdConfig, file)
+    addValue(config, file)
     file:close()
 end
 
 file = io.open(configpath, "r")
+config = slz.unserialize(file:read("*l"))
+
+print(config)
 
 local geo = component.geolyzer
 

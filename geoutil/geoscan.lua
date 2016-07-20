@@ -2,7 +2,8 @@ local component = require("component")
 local slz = require("serialization")
 local fs = require("filesystem")
 
-local geo = component.geolyzer
+local fileutil = require("fileutil")
+local geoutil = require("geoutil")
 
 function move(direction, curX, curY)
     local tmpX = curX
@@ -20,6 +21,8 @@ function move(direction, curX, curY)
     return tmpX, tmpY
 end
 
+local geo = component.geolyzer
+
 local configpath = "geo.cfg"
 local config = {}
 
@@ -28,7 +31,7 @@ config["curY"] = 0
 
 if not fs.exists("configpath") then
     file = io.open(configpath,"w")
-    addValue(config, file)
+    fileutil.addValue(config, file)
     file:close()
 end
 

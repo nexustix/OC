@@ -47,6 +47,14 @@ function scan(intensity, x, y)
     return result
 end
 
+function scanChunk(intensity, ChunkX, ChunkY)
+    for y in range(16) do
+        for x in range(16) do
+            print(x.." : "..y)
+        end
+    end
+end
+
 local configpath = "geo.cfg"
 local config = {}
 
@@ -63,13 +71,15 @@ local file = io.open(configpath, "r")
 local rawConfig = file:read("*l")
 local config = slz.unserialize(rawConfig)
 
-while true do
+scanChunk(1, 0, 0)
+
+--while true do
 
     --scan(1+(1),config["curX"], config["curY"])
-    print(config["curX"].." : "..config["curY"])
+    --print(config["curX"].." : "..config["curY"])
 
-    config["curX"] = config["curX"] + 1
-end
+    --config["curX"] = config["curX"] + 1
+--end
 
 
 --local geo = component.geolyzer

@@ -31,7 +31,7 @@ end
 function scan(intensity, x, y)
     local result = geo.scan(x, y)
 
-    for i in range(intensity) do
+    for i = 1, intensity do
         local addResult = geo.scan(x, y)
         for k,v in pairs(result) do
             --print(k ..": "..v)
@@ -48,8 +48,8 @@ function scan(intensity, x, y)
 end
 
 function scanChunk(intensity, ChunkX, ChunkY)
-    for y in range(16) do
-        for x in range(16) do
+    for y = 0, 16 do
+        for x = 0, 16 do
             print(x.." : "..y)
         end
     end

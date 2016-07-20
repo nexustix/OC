@@ -59,8 +59,17 @@ if not fs.exists("configpath") then
     file:close()
 end
 
-file = io.open(configpath, "r")
-config = slz.unserialize(file:read("*l"))
+local file = io.open(configpath, "r")
+local rawConfig = file:read("*l")
+local config = slz.unserialize(rawConfig)
+
+while true do
+
+    --scan(1+(1),config["curX"], config["curY"])
+    print(config["curX"].." : "..config["curY"])
+
+    config["curX"] = config["curX"] + 1
+end
 
 
 --local geo = component.geolyzer
@@ -85,3 +94,4 @@ end
 ]]--
 
 print(config)
+print(rawConfig)

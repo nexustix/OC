@@ -2,16 +2,14 @@ local component = require("component")
 local slz = require("serialization")
 local fs = require("filesystem")
 
-local geo = component.geolyzer
+local geoutil = require("geoutil")
+local fileutil = require("fileutil")
 
-function writeln(src, dest)
-    dest:write(src)
-    dest:write("\n")
-end
+local geo = component.geolyzer
 
 function addValue(val, dest)
     local slzVar = slz.serialize(val)
-    writeln(slzVar, dest)
+    fileutil.writeln(slzVar, dest)
 end
 
 function move(direction, curX, curY)

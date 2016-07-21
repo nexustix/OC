@@ -1,21 +1,21 @@
 local msg = "the cake is a lie"
 
 function flush()
-    redstone.setOutput("back", 1)
-    redstone.setOutput("back", 0)
+    redstone.setOutput("back", true)
+    redstone.setOutput("back", false)
 end
 
 function sendTwoBits(bitZero, bitOne)
     if bitZero then
-        redstone.setOutput("left", 1)
+        redstone.setOutput("left", true)
     else
-        redstone.setOutput("left", 0)
+        redstone.setOutput("left", false)
     end
 
     if bitOne then
-        redstone.setOutput("right", 1)
+        redstone.setOutput("right", true)
     else
-        redstone.setOutput("right", 0)
+        redstone.setOutput("right", false)
     end
 
     flush()

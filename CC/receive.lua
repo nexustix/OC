@@ -11,6 +11,37 @@ function debug(message)
     end
 end
 
+
+
+function receiveTwoBits()
+    debug("receiving")
+    local inLeft, inRight
+    inLeft = redstone.getInput("left")
+    inRight = redstone.getInput("right")
+    debug("got "..tostring(inLeft) .." ".. tostring(inRight))
+end
+
+while true do
+    curBack = redstone.getInput("back")
+
+    -- low to high
+    if curBack and (curBack ~= lastBack) then
+        debug("low high")
+        receiveTwoBits()
+        redstone.setOutput("front", true)
+    --end
+
+    -- high to low
+    elseif (not curBack) and (curBack ~= lastBack) then
+        debug("high low")
+        redstone.setOutput("front", false)
+    end
+
+    lastBack = curBack
+    os.sleep(0.1)
+end
+
+--[[
 --print()
 while true do
     debug("waiting")
@@ -43,3 +74,4 @@ while true do
     end
     --os.sleep(0.1)
 end
+--]]

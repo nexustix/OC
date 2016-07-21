@@ -1,6 +1,6 @@
 local msg = "the cake is a lie"
-local cur = false
-local last = false
+local curFront = false
+local lastFront = false
 local dbg = true
 
 function debug(message)
@@ -9,6 +9,32 @@ function debug(message)
     end
 end
 
+function flush()
+    debug("flushing")
+    redstone.setOutput("back", true)
+
+    while true do
+        curFront = redstone.getInput("front")
+
+        -- low to high
+        if (curFront) and (curFront ~= lastFront) then
+            debug("low high")
+            redstone.setOutput("back", false)
+        --end
+
+        -- high to low
+        elseif (not curFront) and (curFront ~= lastFront) then
+            debug("n high low")
+            --redstone.setOutput("back", false)
+            break
+        end
+
+        lastFront = curFront
+        os.sleep(0.1)
+    end
+end
+
+--[[
 function flush()
     debug("flushing")
     redstone.setOutput("back", true)
@@ -26,6 +52,7 @@ function flush()
     redstone.setOutput("left", false)
     redstone.setOutput("right", false)
 end
+]]--
 
 function sendTwoBits(bitZero, bitOne)
     debug("setting")
@@ -70,11 +97,14 @@ function sendChar(msgChar)
     end
 end
 
-for k, v in pairs(charToBinary(123)) do
+--for k, v in pairs(charToBinary(123)) do
     --io.write(k..":"..v.." ")
-    io.write(v)
-end
-print()
+    --io.write(v)
+--end
+--print()
 
---sendTwoBits(false, true)
-sendChar(121)
+sendTwoBits(false, true)
+sendTwoBits(false, true)
+sendTwoBits(false, true)
+sendTwoBits(false, true)
+--sendChar(121)

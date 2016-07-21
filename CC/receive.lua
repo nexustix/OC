@@ -38,7 +38,8 @@ while true do
     end
 
     lastBack = curBack
-    os.sleep(0.1)
+    --os.sleep(0.1)
+    local event = os.pullEvent("redstone")
 end
 
 --[[

@@ -30,7 +30,8 @@ function flush()
         end
 
         lastFront = curFront
-        os.sleep(0.1)
+        --os.sleep(0.1)
+        local event = os.pullEvent("redstone")
     end
 end
 

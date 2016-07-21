@@ -39,7 +39,7 @@ while true do
         redstone.setOutput("front", false)
     else
         debug("else")
-        redstone.setOutput("front", false)
+        --redstone.setOutput("front", false)
     end
     --os.sleep(0.1)
 end

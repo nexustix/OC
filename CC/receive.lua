@@ -2,8 +2,6 @@ local buffer = {}
 local index = 0
 
 while true do
-    redstone.setOutput("front", false)
-
     local event = os.pullEvent("redstone")
     if redstone.getInput("back") then
         buffer[index] = redstone.getInput("right")
@@ -15,5 +13,7 @@ while true do
             io.write(tostring(v))
         end
         print()
+    else
+        redstone.setOutput("front", false)
     end
 end

@@ -51,7 +51,7 @@ local file = io.open(configpath, "r")
 local rawConfig = file:read("*l")
 local config = slz.unserialize(rawConfig)
 
-geoutil.scanChunk(1, 0, 0)
+geoutil.scanChunk(geo, 1, 0, 0)
 
 --while true do
 

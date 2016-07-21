@@ -26,6 +26,7 @@ function flush()
         elseif (not curFront) and (curFront ~= lastFront) then
             debug("n high low")
             --redstone.setOutput("back", false)
+            lastFront = curFront
             break
         end
 

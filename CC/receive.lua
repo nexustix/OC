@@ -11,7 +11,13 @@ function debug(message)
     end
 end
 
-
+function writeBit(boolValue)
+    if boolValue then
+        io.write("1")
+    else
+        io.write("0")
+    end
+end
 
 function receiveTwoBits()
     debug("receiving")
@@ -20,7 +26,9 @@ function receiveTwoBits()
     inRight = redstone.getInput("right")
     debug("got "..tostring(inLeft) .." ".. tostring(inRight))
     if not dbg then
-        io.write(tostring(inLeft).." "..tostring(inRight).." ")
+        --io.write(tostring(inLeft).." "..tostring(inRight).." ")
+        writeBit(inLeft)
+        writeBit(inRight)
     end
 end
 

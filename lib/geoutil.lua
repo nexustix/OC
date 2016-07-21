@@ -23,7 +23,7 @@ function geoutil.scanChunk(intensity, ChunkX, ChunkY)
     for y = 0, 15 do
         for x = 0, 15 do
             print(x.." : "..y)
-            self.scan(intensity, x, y)
+            geoutil.scan(intensity, x, y)
             --os.sleep(0.1)
         end
     end

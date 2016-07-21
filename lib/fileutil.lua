@@ -7,7 +7,7 @@ function fileutil.writeln(src, dest)
     dest:write("\n")
 end
 
-function addValue(val, dest)
+function fileutil.addValue(val, dest)
     local slzVar = slz.serialize(val)
     self.writeln(slzVar, dest)
 end

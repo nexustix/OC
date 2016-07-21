@@ -2,7 +2,16 @@ local msg = "the cake is a lie"
 
 function flush()
     redstone.setOutput("back", true)
+    while true do
+        local event = os.pullEvent("redstone")
+        if redstone.getInput("front") then
+            break
+        end
+    end
     redstone.setOutput("back", false)
+    --TODO remove later ?
+    redstone.setOutput("left", false)
+    redstone.setOutput("right", false)
 end
 
 function sendTwoBits(bitZero, bitOne)
@@ -44,4 +53,4 @@ for k, v in pairs(charToBinary(123)) do
 end
 print()
 
-sendTwoBits(0, 1)
+sendTwoBits(false, true)

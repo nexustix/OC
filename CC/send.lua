@@ -39,6 +39,9 @@ function charToBinary(msgChar)
 end
 
 for k, v in pairs(charToBinary(123)) do
-    io.write(k..":"..v.." ")
+    --io.write(k..":"..v.." ")
+    io.write(v)
 end
 print()
+
+sendTwoBits(0, 1)

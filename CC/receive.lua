@@ -22,13 +22,13 @@ end
 function receiveTwoBits()
     debug("receiving")
     local inLeft, inRight
-    inLeft = redstone.getInput("left")
     inRight = redstone.getInput("right")
+    inLeft = redstone.getInput("left")
     debug("got "..tostring(inLeft) .." ".. tostring(inRight))
     if not dbg then
         --io.write(tostring(inLeft).." "..tostring(inRight).." ")
-        writeBit(inLeft)
         writeBit(inRight)
+        writeBit(inLeft)
     end
 end
 

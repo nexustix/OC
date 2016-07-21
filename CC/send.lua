@@ -105,8 +105,8 @@ end
 --end
 --print()
 
---sendTwoBits(false, true)
---sendTwoBits(false, true)
---sendTwoBits(false, true)
---sendTwoBits(false, true)
-sendChar(121)
+sendTwoBits(true, true)
+sendTwoBits(false, false)
+sendTwoBits(false, true)
+sendTwoBits(true, false)
+--sendChar(121)

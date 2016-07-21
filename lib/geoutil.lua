@@ -1,6 +1,6 @@
 local geoutil = {}
 
-function geoutil.scanPillar(intensity, x, y)
+function geoutil.scanPillar(geo, intensity, x, y)
     local result = geo.scan(x, y)
 
     for i = 1, intensity do
@@ -19,11 +19,11 @@ function geoutil.scanPillar(intensity, x, y)
     return result
 end
 
-function geoutil.scanChunk(intensity, ChunkX, ChunkY)
+function geoutil.scanChunk(geo, intensity, ChunkX, ChunkY)
     for y = 0, 15 do
         for x = 0, 15 do
             print(x.." : "..y)
-            geoutil.scanPillar(intensity, x+(16*ChunkX), y+(16*ChunkY))
+            geoutil.scanPillar(geo, intensity, x+(16*ChunkX), y+(16*ChunkY))
             --os.sleep(0.1)
         end
     end

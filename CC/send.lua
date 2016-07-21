@@ -29,6 +29,7 @@ function charToBinary(msgChar)
         curNum = i^2
         if (remain >= curNum) then
             translation[x] = 1
+            remain = remain - curNum
         else
             translation[x] = 0
         end
@@ -38,6 +39,6 @@ function charToBinary(msgChar)
 end
 
 for k, v in pairs(charToBinary(123)) do
-    io.write(k..":"..v)
+    io.write(k..":"..v.." ")
 end
 print()

@@ -3,7 +3,7 @@ local index = 0
 local curBack = false
 local lastBack = false
 
-local dbg = true
+local dbg = false
 
 function debug(message)
     if dbg then
@@ -19,6 +19,9 @@ function receiveTwoBits()
     inLeft = redstone.getInput("left")
     inRight = redstone.getInput("right")
     debug("got "..tostring(inLeft) .." ".. tostring(inRight))
+    if not dbg then
+        io.write(tostring(inLeft).." "..tostring(inRight).." ")
+    end
 end
 
 while true do

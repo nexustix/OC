@@ -24,17 +24,20 @@ end
 function charToBinary(msgChar)
     local remain = msgChar
     local translation = {}
+    local x = 0
     for i = 7, 0, -1 do
+        curNum = i^2
         if (remain >= curNum) then
-            translation[i] = 1
+            translation[x] = 1
         else
-            translation[i] = 0
+            translation[x] = 0
         end
+        x = x + 1
     end
     return translation
 end
 
 for k, v in pairs(charToBinary(123)) do
-    io.write(v)
+    io.write(k..":"..v)
 end
 print()

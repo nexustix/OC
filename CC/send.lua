@@ -6,13 +6,10 @@ function flush()
     redstone.setOutput("back", true)
     while true do
         local event = os.pullEvent("redstone")
-        cur = redstone.getInput("front")
-        if cur and (cur ~= last) then
-            last = true
+
+        if redstone.getInput("front") then
             redstone.setOutput("back", false)
             break
-        else
-            last = false
         end
     end
 
@@ -37,6 +34,7 @@ function sendTwoBits(bitZero, bitOne)
     flush()
 end
 
+--char as int
 function charToBinary(msgChar)
     local remain = msgChar
     local translation = {}
@@ -54,10 +52,19 @@ function charToBinary(msgChar)
     return translation
 end
 
+--char as int
+function sendChar(msgChar)
+    local binChar = charToBinary(msgChar)
+    for i = 0, 7, 2 do
+        sendTwoBits(binChar[i], binChar[i+1])
+    end
+end
+
 for k, v in pairs(charToBinary(123)) do
     --io.write(k..":"..v.." ")
     io.write(v)
 end
 print()
 
-sendTwoBits(false, true)
+--sendTwoBits(false, true)
+sendChar(121)

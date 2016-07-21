@@ -12,14 +12,15 @@ end
 function flush()
     debug("flushing")
     redstone.setOutput("back", true)
-    while true do
+    while not redstone.getInput("front") do
         local event = os.pullEvent("redstone")
 
-        if redstone.getInput("front") then
-            redstone.setOutput("back", false)
-            break
-        end
+        --if redstone.getInput("front") then
+
+            --break
+        --end
     end
+    redstone.setOutput("back", false)
 
     --TODO remove later ?
     redstone.setOutput("left", false)

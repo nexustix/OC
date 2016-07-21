@@ -34,7 +34,7 @@ function charToBinary(msgChar)
     return translation
 end
 
-for k, v in pairs(translation) do
+for k, v in pairs(charToBinary(123)) do
     io.write(v)
 end
 print()

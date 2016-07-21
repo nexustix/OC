@@ -51,11 +51,13 @@ local file = io.open(configpath, "r")
 local rawConfig = file:read("*l")
 local config = slz.unserialize(rawConfig)
 
-local resultFile = io.open("chunk_"..config["curX"]..":"..config["curY"]..".cdat", "w")
+--local resultFile = io.open("chunk_"..config["curX"]..":"..config["curY"]..".cdat", "w")
+local resultFile = io.open("foo.bar", "w")
 
 local chunk = geoutil.scanChunk(geo, 1, 0, 0)
 
 fileutil.addValue(chunk, resultFile)
+file:close()
 
 
 --while true do

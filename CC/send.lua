@@ -1,14 +1,21 @@
 local msg = "the cake is a lie"
+local cur = false
+local last = false
 
 function flush()
     redstone.setOutput("back", true)
     while true do
         local event = os.pullEvent("redstone")
-        if redstone.getInput("front") then
+        cur = redstone.getInput("front")
+        if cur and (cur ~= last) then
+            last = true
+            redstone.setOutput("back", false)
             break
+        else
+            last = false
         end
     end
-    redstone.setOutput("back", false)
+
     --TODO remove later ?
     redstone.setOutput("left", false)
     redstone.setOutput("right", false)

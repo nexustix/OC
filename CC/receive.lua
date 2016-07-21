@@ -15,12 +15,12 @@ while true do
 
         --io.write("\f")
         for k,v in pairs(buffer) do
-            if v == true then
-                io.write(1)
-            else
-                io.write(0)
-            end
-            --io.write(tostring(v))
+            --if v == true then
+                --io.write(1)
+            --else
+                --io.write(0)
+            --end
+            io.write(tostring(v).." ")
         end
         print()
     elseif not curBack then

@@ -1,8 +1,16 @@
 local msg = "the cake is a lie"
 local cur = false
 local last = false
+local dbg = true
+
+function debug(message)
+    if dbg then
+        print(message)
+    end
+end
 
 function flush()
+    debug("flushing")
     redstone.setOutput("back", true)
     while true do
         local event = os.pullEvent("redstone")
@@ -19,6 +27,7 @@ function flush()
 end
 
 function sendTwoBits(bitZero, bitOne)
+    debug("setting")
     if bitZero then
         redstone.setOutput("left", true)
     else

@@ -2,10 +2,20 @@ local buffer = {}
 local index = 0
 local curBack = false
 local lastBack = false
+
+local dbg = true
+
+function debug(message)
+    if dbg then
+        print(message)
+    end
+end
+
 --print()
 while true do
+    debug("waiting")
     local event = os.pullEvent("redstone")
-    curBack =redstone.getInput("back")
+    curBack = redstone.getInput("back")
     if (curBack) and (curBack ~= lastBack) then
         lastBack = true
         buffer[index] = redstone.getInput("right")
@@ -24,7 +34,12 @@ while true do
         end
         print()
     elseif not curBack then
+        debug("else if")
         lastBack = false
         redstone.setOutput("front", false)
+    else
+        debug("else")
+        redstone.setOutput("front", false)
     end
+    --os.sleep(0.1)
 end

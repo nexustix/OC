@@ -2,7 +2,7 @@ local buffer = {}
 local index = 0
 local curBack = false
 local lastBack = false
-
+--print()
 while true do
     local event = os.pullEvent("redstone")
     curBack =redstone.getInput("back")
@@ -13,8 +13,14 @@ while true do
         index = index + 2
         redstone.setOutput("front", true)
 
+        --io.write("\f")
         for k,v in pairs(buffer) do
-            io.write(tostring(v))
+            if v == true then
+                io.write(1)
+            else
+                io.write(0)
+            end
+            --io.write(tostring(v))
         end
         print()
     elseif not curBack then

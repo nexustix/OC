@@ -81,10 +81,10 @@ function charToBinary(msgChar)
     for i = 7, 0, -1 do
         curNum = i^2
         if (remain >= curNum) then
-            translation[x] = 1
+            translation[x] = true
             remain = remain - curNum
         else
-            translation[x] = 0
+            translation[x] = false
         end
         x = x + 1
     end

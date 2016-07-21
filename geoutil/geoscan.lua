@@ -42,7 +42,7 @@ config["curX"] = 0
 config["curY"] = 0
 
 if not fs.exists("configpath") then
-    file = io.open(configpath,"w")
+    local file = io.open(configpath,"w")
     fileutil.addValue(config, file)
     file:close()
 end
@@ -51,7 +51,12 @@ local file = io.open(configpath, "r")
 local rawConfig = file:read("*l")
 local config = slz.unserialize(rawConfig)
 
-geoutil.scanChunk(geo, 1, 0, 0)
+local resultFile = io.open("chunk_"..config["curX"]..":"..config["curY"]..".cdat", "w")
+
+local chunk = geoutil.scanChunk(geo, 1, 0, 0)
+
+fileutil.addValue(chunk, resultFile)
+
 
 --while true do
 

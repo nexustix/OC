@@ -79,7 +79,8 @@ function charToBinary(msgChar)
     local translation = {}
     local x = 1
     for i = 7, 0, -1 do
-        curNum = i^2
+        curNum = 2^i
+        print(curNum)
         if (remain >= curNum) then
             translation[x] = true
             remain = remain - curNum
@@ -99,11 +100,15 @@ function sendChar(msgChar)
     end
 end
 
+
+
 --for k, v in pairs(charToBinary(123)) do
     --io.write(k..":"..v.." ")
     --io.write(v)
 --end
 --print()
+
+
 local charTest = true
 local tmpChar = 121
 

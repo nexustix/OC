@@ -3,6 +3,7 @@ shell.run("clear")
 
 local buffer = io.open("buffer.buff", "w")
 local monitor = peripheral.wrap( "bottom" )
+monitor.clear()
 
 while true do
     event, senderId, message, protocol = os.pullEvent("rednet_message")

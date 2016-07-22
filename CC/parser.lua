@@ -4,6 +4,8 @@ shell.run("clear")
 local buffer = io.open("buffer.buff", "w")
 local monitor = peripheral.wrap( "bottom" )
 monitor.clear()
+term.setCursorPos(1,1)
+
 
 while true do
     event, senderId, message, protocol = os.pullEvent("rednet_message")

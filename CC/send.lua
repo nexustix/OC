@@ -89,7 +89,7 @@ function sendFile(filepath)
     local lineNumber = 1
     for line in io.lines(filepath) do
         debug("line "..tostring(lineNumber))
-        sendString(line)
+        sendString(line.."\n")
         lineNumber = lineNumber + 1
     end
 

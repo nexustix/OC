@@ -1,5 +1,5 @@
 local buffer = {}
-local index = 0
+local index = 1
 local curBack = false
 local lastBack = false
 
@@ -19,6 +19,13 @@ function writeBit(boolValue)
     end
 end
 
+function writeByte(boolArray)
+    for k,v in pairs(boolArray) do
+        writeBit(v)
+    end
+    print()
+end
+
 function receiveTwoBits()
     debug("receiving")
     local inLeft, inRight
@@ -27,9 +34,13 @@ function receiveTwoBits()
     debug("got "..tostring(inLeft) .." ".. tostring(inRight))
     if not dbg then
         --io.write(tostring(inLeft).." "..tostring(inRight).." ")
-        writeBit(inRight)
-        writeBit(inLeft)
+        --writeBit(inRight)
+        --writeBit(inLeft)
     end
+    return inRight, inLeft
+end
+
+function binaryToChar(binArray)
 end
 
 while true do
@@ -38,7 +49,8 @@ while true do
     -- low to high
     if curBack and (curBack ~= lastBack) then
         debug("low high")
-        receiveTwoBits()
+        buffer[index], buffer[index+1] = receiveTwoBits()
+        index = index + 2
         redstone.setOutput("front", true)
     --end
 
@@ -46,6 +58,15 @@ while true do
     elseif (not curBack) and (curBack ~= lastBack) then
         debug("high low")
         redstone.setOutput("front", false)
+    end
+
+    if #buffer == 8 then
+        --print(binaryToChar())
+        writeByte(buffer)
+        buffer = {}
+        index = 1
+    elseif #buffer >= 8 then
+        print("critical error")
     end
 
     lastBack = curBack

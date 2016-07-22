@@ -104,9 +104,22 @@ end
     --io.write(v)
 --end
 --print()
+local charTest = true
+local tmpChar = 121
 
-sendTwoBits(true, true)
-sendTwoBits(false, false)
-sendTwoBits(false, true)
-sendTwoBits(true, false)
---sendChar(121)
+if charTest then
+    for k, v in pairs(charToBinary(tmpChar)) do
+        if v then
+            io.write("1")
+        else
+            io.write("0")
+        end
+    end
+    print()
+    sendChar(tmpChar)
+else
+    sendTwoBits(true, true)
+    sendTwoBits(false, false)
+    sendTwoBits(false, true)
+    sendTwoBits(true, false)
+end

@@ -77,7 +77,7 @@ end
 function charToBinary(msgChar)
     local remain = msgChar
     local translation = {}
-    local x = 0
+    local x = 1
     for i = 7, 0, -1 do
         curNum = i^2
         if (remain >= curNum) then
@@ -94,7 +94,7 @@ end
 --char as int
 function sendChar(msgChar)
     local binChar = charToBinary(msgChar)
-    for i = 0, 7, 2 do
+    for i = 1, 8, 2 do
         sendTwoBits(binChar[i], binChar[i+1])
     end
 end

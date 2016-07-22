@@ -110,9 +110,11 @@ local tmpChar = 121
 if charTest then
     for k, v in pairs(charToBinary(tmpChar)) do
         if v then
-            io.write("1")
+            --io.write("1")
+            print(k.." ".."1")
         else
-            io.write("0")
+            --io.write("0")
+            print(k.." ".."0")
         end
     end
     print()

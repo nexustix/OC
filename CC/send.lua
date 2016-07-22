@@ -100,6 +100,12 @@ function sendChar(msgChar)
     end
 end
 
+function sendString(message)
+    for i = 1, message:len(), 1 do
+        --print(msg:byte(i))
+        sendChar(message:byte(i))
+    end
+end
 
 
 --for k, v in pairs(charToBinary(123)) do

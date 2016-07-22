@@ -52,7 +52,7 @@ function binaryToChar(binArray)
         end
         x = x + 1
     end
-    return translation
+    return result
 end
 
 while true do
@@ -74,6 +74,9 @@ while true do
 
     if #buffer == 8 then
         --print(binaryToChar())
+        local theChar = binaryToChar(buffer)
+        io.write(string.char(theChar).." "..theChar.." ")
+        --io.write(tostring(theChar).." ")
         writeByte(buffer)
         buffer = {}
         index = 1

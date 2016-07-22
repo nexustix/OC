@@ -57,6 +57,10 @@ function binaryToChar(binArray)
     return result
 end
 
+print("<-> starup grace period")
+os.sleep(5)
+print("<-> starting operation")
+
 while true do
     curBack = redstone.getInput("back")
 

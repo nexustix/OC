@@ -41,6 +41,18 @@ function receiveTwoBits()
 end
 
 function binaryToChar(binArray)
+    --local remain = msgChar
+    local result = 0
+    local x = 1
+    for i = 7, 0, -1 do
+        curNum = 2^i
+        if binArray[x] then
+            result = result + curNum
+        --else
+        end
+        x = x + 1
+    end
+    return translation
 end
 
 while true do

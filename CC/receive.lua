@@ -5,6 +5,8 @@ local lastBack = false
 
 local dbg = false
 
+rednet.open("top")
+
 function debug(message)
     if dbg then
         print(message)
@@ -74,15 +76,18 @@ while true do
 
     if #buffer == 8 then
         --print(binaryToChar())
-        local theChar = binaryToChar(buffer)
+        --local theChar = binaryToChar(buffer)
         --io.write(string.char(theChar).." "..theChar.." ")
         --io.write(tostring(theChar).." ")
         writeByte(buffer)
         --io.write(" ")
+        rednet.broadcast(binaryToChar(buffer), "cct_zero")
         buffer = {}
         index = 1
     elseif #buffer >= 8 then
-        print("critical error")
+        print()
+        print("<!> critical error")
+        break
     end
 
     lastBack = curBack

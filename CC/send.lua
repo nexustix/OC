@@ -109,7 +109,8 @@ end
 --print()
 
 
-local charTest = true
+local charTest = false
+local messageTest = true
 local tmpChar = 121
 
 if charTest then
@@ -124,6 +125,10 @@ if charTest then
     end
     print()
     sendChar(tmpChar)
+elseif messageTest then
+    for i = 1, msg:len(), 1 do
+        print(msg:byte(i))
+    end
 else
     sendTwoBits(true, true)
     sendTwoBits(false, false)

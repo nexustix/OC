@@ -20,41 +20,18 @@ function flush()
         if (curFront) and (curFront ~= lastFront) then
             --debug("low high")
             redstone.setOutput("back", false)
-        --end
 
         -- high to low
         elseif (not curFront) and (curFront ~= lastFront) then
-            --debug("n high low")
-            --redstone.setOutput("back", false)
             lastFront = curFront
             break
         end
 
         lastFront = curFront
-        --os.sleep(0.1)
         local event = os.pullEvent("redstone")
     end
 end
 
---[[
-function flush()
-    debug("flushing")
-    redstone.setOutput("back", true)
-    while not redstone.getInput("front") do
-        local event = os.pullEvent("redstone")
-
-        --if redstone.getInput("front") then
-
-            --break
-        --end
-    end
-    redstone.setOutput("back", false)
-
-    --TODO remove later ?
-    redstone.setOutput("left", false)
-    redstone.setOutput("right", false)
-end
-]]--
 
 function sendTwoBits(bitZero, bitOne)
     --debug("setting")
@@ -80,7 +57,7 @@ function charToBinary(msgChar)
     local x = 1
     for i = 7, 0, -1 do
         curNum = 2^i
-        print(curNum)
+        --print(curNum)
         if (remain >= curNum) then
             translation[x] = true
             remain = remain - curNum
@@ -107,14 +84,6 @@ function sendString(message)
     end
 end
 
-
---for k, v in pairs(charToBinary(123)) do
-    --io.write(k..":"..v.." ")
-    --io.write(v)
---end
---print()
-
-
 local charTest = false
 local messageTest = true
 local tmpChar = 121
@@ -132,10 +101,11 @@ if charTest then
     print()
     sendChar(tmpChar)
 elseif messageTest then
-    for i = 1, msg:len(), 1 do
+    sendString("this is a test")
+    --for i = 1, msg:len(), 1 do
         --print(msg:byte(i))
-        sendChar(msg:byte(i))
-    end
+        --sendChar(msg:byte(i))
+    --end
 else
     sendTwoBits(true, true)
     sendTwoBits(false, false)

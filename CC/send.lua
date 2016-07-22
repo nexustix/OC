@@ -84,9 +84,23 @@ function sendString(message)
     end
 end
 
+function sendFile(filepath)
+    --local tmpFile = io.open(filepath, "r")
+    local lineNumber = 1
+    for line in io.lines(filepath) do
+        debug("line "..tostring(lineNumber))
+        sendString(line)
+        lineNumber = lineNumber + 1
+    end
+
+end
+
 local charTest = false
-local messageTest = true
+local messageTest = false
+local fileTest = true
 local tmpChar = 121
+
+
 
 if charTest then
     for k, v in pairs(charToBinary(tmpChar)) do
@@ -106,6 +120,8 @@ elseif messageTest then
         --print(msg:byte(i))
         --sendChar(msg:byte(i))
     --end
+elseif fileTest then
+    sendFile("test")
 else
     sendTwoBits(true, true)
     sendTwoBits(false, false)

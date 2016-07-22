@@ -23,7 +23,7 @@ function writeByte(boolArray)
     for k,v in pairs(boolArray) do
         writeBit(v)
     end
-    print()
+    --print()
 end
 
 function receiveTwoBits()
@@ -75,9 +75,10 @@ while true do
     if #buffer == 8 then
         --print(binaryToChar())
         local theChar = binaryToChar(buffer)
-        io.write(string.char(theChar).." "..theChar.." ")
+        --io.write(string.char(theChar).." "..theChar.." ")
         --io.write(tostring(theChar).." ")
         writeByte(buffer)
+        --io.write(" ")
         buffer = {}
         index = 1
     elseif #buffer >= 8 then

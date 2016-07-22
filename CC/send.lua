@@ -127,7 +127,8 @@ if charTest then
     sendChar(tmpChar)
 elseif messageTest then
     for i = 1, msg:len(), 1 do
-        print(msg:byte(i))
+        --print(msg:byte(i))
+        sendChar(msg:byte(i))
     end
 else
     sendTwoBits(true, true)

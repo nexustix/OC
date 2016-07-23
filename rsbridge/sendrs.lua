@@ -25,6 +25,8 @@ function flush()
         -- low to high
         if (curFront > 0) and (curFront ~= lastFront) then
             --debug("low high")
+            redstone.setOutput(sides.left, 0)
+            redstone.setOutput(sides.right, 0)
             redstone.setOutput(sides.back, 0)
 
         -- high to low

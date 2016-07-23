@@ -1,4 +1,4 @@
-rednet.open("top")
+rednet.open("back")
 shell.run("clear")
 
 local buffer = io.open("buffer.buff", "w")

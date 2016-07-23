@@ -25,8 +25,9 @@ function flush()
         -- low to high
         if (curFront > 0) and (curFront ~= lastFront) then
             --debug("low high")
-            redstone.setOutput(sides.left, 0)
-            redstone.setOutput(sides.right, 0)
+
+            --redstone.setOutput(sides.left, 0)
+            --redstone.setOutput(sides.right, 0)
             redstone.setOutput(sides.back, 0)
 
         -- high to low
@@ -44,20 +45,22 @@ end
 
 function sendTwoBits(bitZero, bitOne)
     debug("setting")
+    redstone.setOutput(sides.left, 0)
+    redstone.setOutput(sides.right, 0)
     if bitZero then
         --redstone.setOutput(sides.left, 15)
         redstone.setOutput(sides.right, 15)
-    else
+    --else
         --redstone.setOutput(sides.left, 0)
-        redstone.setOutput(sides.right, 0)
+        --redstone.setOutput(sides.right, 0)
     end
 
     if bitOne then
         --redstone.setOutput(sides.right, 15)
         redstone.setOutput(sides.left, 15)
-    else
+    --else
         --redstone.setOutput(sides.right, 0)
-        redstone.setOutput(sides.left, 0)
+        --redstone.setOutput(sides.left, 0)
     end
 
     flush()

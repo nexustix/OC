@@ -45,15 +45,19 @@ end
 function sendTwoBits(bitZero, bitOne)
     debug("setting")
     if bitZero then
-        redstone.setOutput(sides.left, 15)
+        --redstone.setOutput(sides.left, 15)
+        redstone.setOutput(sides.right, 15)
     else
-        redstone.setOutput(sides.left, 0)
+        --redstone.setOutput(sides.left, 0)
+        redstone.setOutput(sides.right, 0)
     end
 
     if bitOne then
-        redstone.setOutput(sides.right, 15)
+        --redstone.setOutput(sides.right, 15)
+        redstone.setOutput(sides.left, 15)
     else
-        redstone.setOutput(sides.right, 0)
+        --redstone.setOutput(sides.right, 0)
+        redstone.setOutput(sides.left, 0)
     end
 
     flush()
@@ -105,7 +109,7 @@ function sendFile(filepath)
 end
 
 local charTest = false
-local messageTest = false
+local messageTest = true
 local fileTest = false
 local tmpChar = 121
 

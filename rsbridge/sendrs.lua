@@ -23,12 +23,12 @@ function flush()
         curFront = redstone.getInput(sides.front)
 
         -- low to high
-        if (curFront) and (curFront ~= lastFront) then
+        if (curFront > 0) and (curFront ~= lastFront) then
             --debug("low high")
             redstone.setOutput(sides.back, 0)
 
         -- high to low
-        elseif (not curFront) and (curFront ~= lastFront) then
+    elseif (not (curFront > 0)) and (curFront ~= lastFront) then
             lastFront = curFront
             break
         end

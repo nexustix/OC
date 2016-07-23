@@ -16,7 +16,7 @@ function debug(message)
 end
 
 function flush()
-    --debug("flushing")
+    debug("flushing")
     redstone.setOutput(sides.back, 15)
 
     while true do
@@ -41,7 +41,7 @@ end
 
 
 function sendTwoBits(bitZero, bitOne)
-    --debug("setting")
+    debug("setting")
     if bitZero then
         redstone.setOutput(sides.left, 15)
     else

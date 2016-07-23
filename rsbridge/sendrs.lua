@@ -7,6 +7,7 @@ local component = require("component")
 local redstone = component.redstone
 
 local event = require("event")
+local sides = require("sides")
 
 function debug(message)
     if dbg then
@@ -16,15 +17,15 @@ end
 
 function flush()
     --debug("flushing")
-    redstone.setOutput("back", true)
+    redstone.setOutput(sides.back, true)
 
     while true do
-        curFront = redstone.getInput("front")
+        curFront = redstone.getInput(sides.front)
 
         -- low to high
         if (curFront) and (curFront ~= lastFront) then
             --debug("low high")
-            redstone.setOutput("back", false)
+            redstone.setOutput(sides.back, false)
 
         -- high to low
         elseif (not curFront) and (curFront ~= lastFront) then
@@ -42,15 +43,15 @@ end
 function sendTwoBits(bitZero, bitOne)
     --debug("setting")
     if bitZero then
-        redstone.setOutput("left", true)
+        redstone.setOutput(sides.left, true)
     else
-        redstone.setOutput("left", false)
+        redstone.setOutput(sides.left, false)
     end
 
     if bitOne then
-        redstone.setOutput("right", true)
+        redstone.setOutput(sides.right, true)
     else
-        redstone.setOutput("right", false)
+        redstone.setOutput(sides.right, false)
     end
 
     flush()

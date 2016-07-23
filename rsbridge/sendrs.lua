@@ -17,7 +17,7 @@ end
 
 function flush()
     --debug("flushing")
-    redstone.setOutput(sides.back, true)
+    redstone.setOutput(sides.back, 15)
 
     while true do
         curFront = redstone.getInput(sides.front)
@@ -25,7 +25,7 @@ function flush()
         -- low to high
         if (curFront) and (curFront ~= lastFront) then
             --debug("low high")
-            redstone.setOutput(sides.back, false)
+            redstone.setOutput(sides.back, 0)
 
         -- high to low
         elseif (not curFront) and (curFront ~= lastFront) then
@@ -43,15 +43,15 @@ end
 function sendTwoBits(bitZero, bitOne)
     --debug("setting")
     if bitZero then
-        redstone.setOutput(sides.left, true)
+        redstone.setOutput(sides.left, 15)
     else
-        redstone.setOutput(sides.left, false)
+        redstone.setOutput(sides.left, 0)
     end
 
     if bitOne then
-        redstone.setOutput(sides.right, true)
+        redstone.setOutput(sides.right, 15)
     else
-        redstone.setOutput(sides.right, false)
+        redstone.setOutput(sides.right, 0)
     end
 
     flush()

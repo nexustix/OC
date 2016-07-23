@@ -1,7 +1,7 @@
 local msg = "the cake is a lie"
 local curFront = 0
 local lastFront = 0
-local dbg = true
+local dbg = false
 
 local component = require("component")
 local redstone = component.redstone
@@ -16,7 +16,7 @@ function debug(message)
 end
 
 function flush()
-    debug("flushing")
+    --debug("flushing")
     redstone.setOutput(sides.back, 15)
 
     while true do
@@ -44,7 +44,7 @@ end
 
 
 function sendTwoBits(bitZero, bitOne)
-    debug("setting")
+    ---debug("setting")
     if bitZero then
         --redstone.setOutput(sides.left, 15)
         redstone.setOutput(sides.right, 15)

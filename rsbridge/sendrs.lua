@@ -1,6 +1,6 @@
 local msg = "the cake is a lie"
-local curFront = false
-local lastFront = false
+local curFront = 0
+local lastFront = 0
 local dbg = true
 
 local component = require("component")

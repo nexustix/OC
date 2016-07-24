@@ -11,11 +11,14 @@ while true do
         if success_1 then
             if data_1.metadata >= 7 then
                 turtle.digDown()
+                turtle.placeDown()
             end
           --print("D Block name: ", data_1.name)
           --print("D Block metadata: ", data_1.metadata)
+        else
+            turtle.placeDown()
         end
-        turtle.placeDown()
+
     end
 
     --Andersite

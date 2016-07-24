@@ -22,6 +22,12 @@ while true do
         --turtle.digDown()
         farm()
         turtle.forward()
+
+    --Diorite
+    elseif (data.metadata == 4) then
+        turtle.turnLeft()
+        turtle.forward()
+        
     --Granite
     elseif (data.metadata == 2) then
         turtle.turnRight()

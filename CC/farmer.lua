@@ -2,7 +2,23 @@ while true do
     local success, data = turtle.inspectUp()
 
     if success then
-      print("Block name: ", data.name)
-      print("Block metadata: ", data.metadata)
+      print("U Block name: ", data.name)
+      print("U Block metadata: ", data.metadata)
+    end
+
+    function farm()
+        local success_1, data_1 = turtle.inspectDown()
+        if success_1 then
+          print("D Block name: ", data_1.name)
+          print("D Block metadata: ", data_1.metadata)
+        end
+    end
+
+    --Andersite
+    if (data.metadata == 6) then
+        --turtle.digDown()
+        farm()
+        turtle.forward()
+    else
     end
 end

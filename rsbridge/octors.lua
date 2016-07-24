@@ -8,7 +8,7 @@ local redstone = component.redstone
 local event = require("event")
 local sides = require("sides")
 
-local modem = require("modem")
+local modem = component.modem
 
 modem.open(3587)
 

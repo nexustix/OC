@@ -1,5 +1,8 @@
 while true do
-    local success, block = turtle.inspectUp()
-    print(block)
-    os.sleep(1)
+    local success, data = turtle.inspectUp()
+
+    if success then
+      print("Block name: ", data.name)
+      print("Block metadata: ", data.metadata)
+    end
 end

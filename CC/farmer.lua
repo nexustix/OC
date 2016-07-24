@@ -15,6 +15,7 @@ while true do
           --print("D Block name: ", data_1.name)
           --print("D Block metadata: ", data_1.metadata)
         end
+        turtle.placeDown()
     end
 
     --Andersite
@@ -27,7 +28,7 @@ while true do
     elseif (data.metadata == 4) then
         turtle.turnLeft()
         turtle.forward()
-        
+
     --Granite
     elseif (data.metadata == 2) then
         turtle.turnRight()

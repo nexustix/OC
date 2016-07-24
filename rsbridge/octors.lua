@@ -115,5 +115,7 @@ end
 while true do
     --local _, _, from, port, _, message = event.pull("modem_message")
     local _, _, from, port, _, message = computer.pullSignal(nil, "modem_message")
-    sendString(tostring(message))
+    if message ~= nil then
+        sendString(tostring(message))
+    end
 end

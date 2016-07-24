@@ -22,7 +22,10 @@ while true do
         --turtle.digDown()
         farm()
         turtle.forward()
-    else
+    --Granite
+    elseif (data.metadata == 2) then
+        turtle.turnRight()
+        turtle.forward()
     end
 
     os.sleep(0.25)

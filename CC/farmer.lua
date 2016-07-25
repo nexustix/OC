@@ -72,5 +72,5 @@ while true do
         end
     end
 
-    os.sleep(3)
+    os.sleep(1)
 end

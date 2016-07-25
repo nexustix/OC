@@ -49,6 +49,7 @@ while true do
 
     elseif data.name == "minecraft:prismarine" then
         dumpItems()
+        turtle.forward()
     end
 
     os.sleep(0.25)

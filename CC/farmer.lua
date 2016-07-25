@@ -13,29 +13,42 @@ while true do
                 turtle.digDown()
                 turtle.placeDown()
             end
-          --print("D Block name: ", data_1.name)
-          --print("D Block metadata: ", data_1.metadata)
         else
             turtle.placeDown()
         end
 
     end
 
-    --Andersite
-    if (data.metadata == 6) then
-        --turtle.digDown()
-        farm()
-        turtle.forward()
+    function dumpItems()
+        for i = 1, 16 do
+            turtle.select(i)
+            if not turtle.dropDown() then
+                break
+            end
+        end
+        turtle.select(1)
+    end
 
-    --Diorite
-    elseif (data.metadata == 4) then
-        turtle.turnLeft()
-        turtle.forward()
+    if data.name == "minecraft:stone" then
+        --Andersite
+        if (data.metadata == 6) then
+            --turtle.digDown()
+            farm()
+            turtle.forward()
 
-    --Granite
-    elseif (data.metadata == 2) then
-        turtle.turnRight()
-        turtle.forward()
+        --Diorite
+        elseif (data.metadata == 4) then
+            turtle.turnLeft()
+            turtle.forward()
+
+        --Granite
+        elseif (data.metadata == 2) then
+            turtle.turnRight()
+            turtle.forward()
+        end
+
+    elseif data.name == "minecraft:prismarine" then
+        dumpItems()
     end
 
     os.sleep(0.25)

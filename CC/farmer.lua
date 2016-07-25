@@ -29,6 +29,17 @@ while true do
         turtle.select(1)
     end
 
+    function pickFuel()
+        turtle.suckDown()
+        turtle.refuel()
+        turtle.dropDown()
+        if turtle.getFuelLevel() >= 1000 then
+            return true
+        else
+            return false
+        end
+    end
+
     if data.name == "minecraft:stone" then
         --Andersite
         if (data.metadata == 6) then
@@ -50,6 +61,13 @@ while true do
     elseif data.name == "minecraft:prismarine" then
         dumpItems()
         turtle.forward()
+
+    elseif data.name == "minecraft:nether_brick" then
+        if pickFuel() then
+            turtle.forward()
+        else
+            os.sleep(10)
+        end
     end
 
     os.sleep(0.25)

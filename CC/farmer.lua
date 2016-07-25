@@ -30,9 +30,11 @@ while true do
     end
 
     function pickFuel()
-        turtle.suckDown()
-        turtle.refuel()
-        turtle.dropDown()
+        if turtle.getFuelLevel() <= (turtle.getFuelLimit() - 1000) then
+            turtle.suckDown()
+            turtle.refuel()
+            turtle.dropDown()
+        end
         if turtle.getFuelLevel() >= 1000 then
             return true
         else

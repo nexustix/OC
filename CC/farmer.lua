@@ -4,6 +4,11 @@ while true do
     if success then
       print("U Block name: ", data.name)
       print("U Block metadata: ", data.metadata)
+    else
+        --trying to reset turtle to rail
+        turtle.turnLeft()
+        turtle.turnLeft()
+        turtle.forward()
     end
 
     function farm()

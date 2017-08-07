@@ -2,7 +2,7 @@ local nxpacket = {}
 
 -- checks if packet contains node entry with given id
 function nxpacket.isContainingID(the_packet, the_id)
-    for k, v in pairs(the_packet.nodes) do
+    for k, v in pairs(the_packet.path) do
         if (v == the_id) then
             return true
         end
@@ -12,8 +12,8 @@ end
 
 -- adds node entry to packet
 function nxpacket.addID(the_packet, the_id)
-    --the_packet.nodes[the_id] = true
-    the_packet.nodes[#the_packet.nodes+1] = the_id
+    --the_packet.path[the_id] = true
+    the_packet.path[#the_packet.path+1] = the_id
     return the_packet
 end
 
@@ -21,10 +21,23 @@ end
 function nxpacket.wrap(the_message)
     local tmp_packet = {}
 
-    tmp_packet.nodes = {}
+    --  path passed on way to target
+    tmp_packet.path = {}
+    --  current lifetime of packagfe
     tmp_packet.lifetime = 0
+    --  maximum lifetime of package (0 = forever)
     tmp_packet.maxlifetime = 0
-    tmp_packet.id = "nil"
+    -- metadata that could be used by protocol
+    tmp_packet.section = 0
+    --  ID of the package
+    tmp_packet.id = ""
+    -- what kind of packet is it
+    tmp_packet.kind = ""
+    -- source adress of packet
+    tmp_packet.source = ""
+    -- destination of packet
+    tmp_packet.destination = ""
+    -- the actual message/data
     tmp_packet.data = the_message
 
     return tmp_packet
@@ -52,10 +65,13 @@ function nxpacket.isPacket(the_packet)
         return false
     end
 
-    if  hasKey(the_packet, "nodes") and
+    if  hasKey(the_packet, "path") and
         hasKey(the_packet, "lifetime") and
         hasKey(the_packet, "maxlifetime") and
         hasKey(the_packet, "id") and
+        hasKey(the_packet, "section") and
+        hasKey(the_packet, "source") and
+        hasKey(the_packet, "destination") and
         hasKey(the_packet, "data") then
             return true
     end

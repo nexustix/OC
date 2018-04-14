@@ -1,0 +1,7 @@
+;; single value
+(<table key> <data>)
+;; multi value
+(<table key>
+    (<table key> <data>)
+    (<table key> <data>)
+    (<table key> <data>))

@@ -29,7 +29,7 @@ function nxpacket.wrap(the_message)
     tmp_packet.maxlifetime = 0
     -- metadata that could be used by protocol
     tmp_packet.section = 0
-    --  ID of the package
+    -- ID of the package
     tmp_packet.id = ""
     -- what kind of packet is it
     tmp_packet.kind = ""

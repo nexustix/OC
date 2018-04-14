@@ -1,2 +1,2 @@
 # OC
-OpenComputers scripts
+Collection of assorted OpenComputers scripts
